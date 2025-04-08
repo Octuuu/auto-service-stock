@@ -1,8 +1,9 @@
+// stockController.js
 const { Movement } = require('../models/movementModel');
 const { Product } = require('../models/productModel');
 
 // Registrar un movimiento de stock (añadir o quitar)
-const registerMovement = async (req, res) => {
+const createMovement = async (req, res) => {
   const { productId, quantity, type } = req.body;  // 'type' puede ser 'entrada' o 'salida'
 
   try {
@@ -34,7 +35,7 @@ const registerMovement = async (req, res) => {
 };
 
 // Obtener el historial de movimientos de stock
-const getMovementHistory = async (req, res) => {
+const getAllMovements = async (req, res) => {
   try {
     const movements = await Movement.findAll();
     res.json({ movements });
@@ -43,4 +44,4 @@ const getMovementHistory = async (req, res) => {
   }
 };
 
-module.exports = { registerMovement, getMovementHistory };
+module.exports = { createMovement, getAllMovements };
